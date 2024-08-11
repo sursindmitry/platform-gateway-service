@@ -1,0 +1,36 @@
+server:
+  port: 9090
+
+logging:
+  level:
+    root: info
+
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins:
+              - "http://localhost:3000,http://backend-gateway-client:9090"
+            allowed-headers: "*"
+            allowed-methods:
+              - GET
+              - POST
+              - PATCH
+              - PUT
+              - DELETE
+              - OPTIONS
+      routes:
+        - id: user_service_route
+          uri: http://backend-resources:9191/user-service
+          predicates:
+            Path=/user-service/**
+          filters:
+            - RewritePath=/user-service(?<segment>/?.*), $\{segment}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
