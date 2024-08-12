@@ -1,13 +1,16 @@
-package com.sursindmitry.gateway_service;
+package com.sursindmitry.gatewayservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * Main class.
+ */
 @SpringBootApplication
 public class GatewayServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(GatewayServiceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(GatewayServiceApplication.class, args);
+    }
 
 }

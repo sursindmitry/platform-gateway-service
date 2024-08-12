@@ -1,4 +1,4 @@
-package com.sursindmitry.gateway_service;
+package com.sursindmitry.gatewayservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
