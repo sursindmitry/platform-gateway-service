@@ -28,6 +28,12 @@ spring:
             Path=/user-service/**
           filters:
             - RewritePath=/user-service(?<segment>/?.*), $\{segment}
+        - id: report_service_route
+          uri: http://backend-resources:9292/report-service
+          predicates:
+            Path=/report-service/**
+          filters:
+            - RewritePath=/report-service(?<segment>/?.*), $\{segment}
 
 management:
   endpoints:
