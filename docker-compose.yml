@@ -54,6 +54,22 @@ services:
       - "6379:6379"
     command: ["redis-server", "--save", "60", "1", "--loglevel", "warning"]
 
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--save", "60", "1", "--loglevel", "warning"]
+
   keycloak:
     image: quay.io/keycloak/keycloak:25.0.4
     command:
