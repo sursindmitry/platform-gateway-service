@@ -2,12 +2,14 @@ version: "3"
 
 networks:
   network:
+    driver: bridge
 
 services:
   keycloak:
     image: quay.io/keycloak/keycloak:26.0.0
     command:
       - start-dev
+      - --import-realm
     env_file:
       - .env
     volumes:
@@ -17,6 +19,8 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
     ports:
       - "${KEYCLOAK_PORT}:${KEYCLOAK_PORT}"
+    networks:
+      - network
 
   otel-collector:
     image: otel/opentelemetry-collector-contrib:0.111.0
